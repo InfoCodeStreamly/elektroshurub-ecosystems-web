@@ -5,189 +5,837 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ЕлектроШуруб Екосистеми - Революційна Екосистема Мобільних Офісів</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #2d6e3c;
+            --secondary-color: #4a9960;
+            --accent-color: #f39c12;
+            --success-color: #27ae60;
+            --info-color: #3498db;
+            --warning-color: #f1c40f;
+            --danger-color: #e74c3c;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Навігація */
+        .navbar {
+            backdrop-filter: blur(10px);
+            background: rgba(45, 110, 60, 0.9) !important;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        /* Героїчна секція */
         .hero {
-            background: linear-gradient(135deg, #28a745, #20c997);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero .tagline {
+            font-size: 1.5rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        .cta-button {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            background: var(--accent-color);
+            border: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.6s both;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background: #e67e22;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(243, 156, 18, 0.3);
+            color: white;
+        }
+        
+        /* Анімації */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        /* Карточки особливостей */
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--primary-color);
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            animation: pulse 2s infinite;
+        }
+        
+        .feature-card h3 {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        /* Статистики */
+        .stats-section {
+            background: var(--primary-color);
             color: white;
             padding: 80px 0;
         }
-        .feature {
+        
+        .stat-item {
+            text-align: center;
             margin-bottom: 30px;
-            padding: 20px;
-            border-left: 4px solid #28a745;
-            background-color: #f8f9fa;
         }
-        .big-slogan {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #28a745;
-            text-align: center;
-        }
-        .audience-item {
-            background: #e9ecef;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-            text-align: center;
-        }
-        footer {
-            background: #343a40;
-            color: white;
-            padding: 40px 0;
-        }
-        h1 {
+        
+        .stat-number {
             font-size: 3rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 700;
+            color: var(--accent-color);
+            display: block;
         }
-        .tagline {
-            font-size: 1.3rem;
+        
+        .stat-label {
+            font-size: 1.1rem;
             opacity: 0.9;
+        }
+        
+        /* Продукти */
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+        
+        .product-content {
+            padding: 25px;
+        }
+        
+        .price-tag {
+            background: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        /* Галерея */
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            height: 250px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        /* Команда */
+        .team-card {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+        }
+        
+        /* Секції */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--dark-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+        
+        .bg-light-custom {
+            background: #f8f9fa;
+        }
+        
+        /* Слоган */
+        .big-slogan {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-align: center;
+            line-height: 1.3;
+            margin: 40px 0;
+        }
+        
+        /* Аудиторія */
+        .audience-item {
+            background: white;
+            padding: 25px;
+            margin: 10px 0;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        .audience-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        /* Футер */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .big-slogan {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* Кнопка прокрутки вгору */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-to-top:hover {
+            background: #e67e22;
+            transform: translateY(-3px);
         }
     </style>
 </head>
 <body>
-    <header class="hero">
-        <div class="container text-center">
+    <!-- Навігація -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">🔩 ЕлектроШуруб</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Головна</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Про нас</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products">Продукти</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Галерея</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing">Ціни</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#team">Команда</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Героїчна секція -->
+    <header id="home" class="hero">
+        <div class="container text-center hero-content">
             <h1>🔩🏢🌱🐔 ЕлектроШуруб Екосистеми</h1>
             <p class="tagline">Революційна Екосистема Мобільних Офісів</p>
+            <a href="#about" class="cta-button">
+                <i class="fas fa-rocket"></i> Дізнатися більше
+            </a>
         </div>
     </header>
 
-    <main>
-        <section class="py-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto text-center">
-                        <h2 class="mb-4">Концепція бізнесу</h2>
-                        <p class="lead"><strong>Місія:</strong> Створення самодостатніх мобільних офісних екосистем із замкнутим циклом виробництва та природної регенерації.</p>
+    <!-- Статистики -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <div class="stat-label">Встановлених офісів</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <span class="stat-number">95%</span>
+                        <div class="stat-label">Задоволених клієнтів</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <span class="stat-number">48г</span>
+                        <div class="stat-label">Час встановлення</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <span class="stat-number">12000</span>
+                        <div class="stat-label">Органічних яєць на місяць</div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="py-5 bg-light">
-            <div class="container">
-                <h2 class="text-center mb-5">Унікальна Бізнес-Модель</h2>
-                
-                <div class="row">
-                    <div class="col-md-6 mb-4">
-                        <div class="feature h-100">
-                            <h3>🔩 Технологічна Основа: Електро Шурупи</h3>
-                            <ul>
-                                <li><strong>Запатентована система кріплень</strong> для швидкого збирання/розбирання контейнерних модулів</li>
-                                <li>Електроінструменти з IoT-моніторингом для контролю якості збирання</li>
-                                <li>Можливість безшовної модифікації офісних просторів "на льоту"</li>
+    <!-- Про нас -->
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="section-title">Концепція бізнесу</h2>
+                    <p class="lead"><strong>Місія:</strong> Створення самодостатніх мобільних офісних екосистем із замкнутим циклом виробництва та природної регенерації.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Унікальна бізнес-модель -->
+    <section class="bg-light-custom">
+        <div class="container">
+            <h2 class="section-title">Унікальна Бізнес-Модель</h2>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Технологічна Основа: Електро Шурупи</h3>
+                        <ul>
+                            <li><strong>Запатентована система кріплень</strong> для швидкого збирання/розбирання контейнерних модулів</li>
+                            <li>Електроінструменти з IoT-моніторингом для контролю якості збирання</li>
+                            <li>Можливість безшовної модифікації офісних просторів "на льоту"</li>
+                            <li>Сертифікація ISO 9001 для якості процесів</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>Продуктова Лінійка: Контейнерні Офіси</h3>
+                        <ul>
+                            <li>Модульні офіси з перероблених морських контейнерів</li>
+                            <li>Швидка установка завдяки системі електро шурупів</li>
+                            <li>Масштабованість: від стартап-студії до корпоративних кампусів</li>
+                            <li>Сучасні системи клімат-контролю та освітлення</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Екологічна Інтеграція: Озеленення</h3>
+                        <ul>
+                            <li>Вертикальні сади на зовнішніх стінах контейнерів</li>
+                            <li>Зелені дахи з системою збору дощової води</li>
+                            <li>Очищення повітря та створення комфортного мікроклімату</li>
+                            <li>Автономні системи поливу з інтелектуальним управлінням</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-egg"></i>
+                        </div>
+                        <h3>Біологічний Компонент: Кури-Помічники</h3>
+                        <ul>
+                            <li>Міні-курники як частина ландшафтного дизайну</li>
+                            <li>Природне добриво для підтримання зелених зон</li>
+                            <li>Додатковий дохід від органічних яєць для співробітників</li>
+                            <li>Система автоматичного догляду за птицею</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Продукти -->
+    <section id="products">
+        <div class="container">
+            <h2 class="section-title">Наші Продукти</h2>
+            
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div class="product-content">
+                            <h4>ЕкоСтудія Стартап</h4>
+                            <p>Компактний офіс для молодих команд з повним циклом життєзабезпечення</p>
+                            <div class="price-tag">від $25,000</div>
+                            <ul class="mt-3">
+                                <li>20м² робочого простору</li>
+                                <li>5 курочок-помічників</li>
+                                <li>Вертикальний сад</li>
+                                <li>Сонячні панелі</li>
                             </ul>
                         </div>
                     </div>
+                </div>
 
-                    <div class="col-md-6 mb-4">
-                        <div class="feature h-100">
-                            <h3>🏢 Продуктова Лінійка: Контейнерні Офіси</h3>
-                            <ul>
-                                <li>Модульні офіси з перероблених морських контейнерів</li>
-                                <li>Швидка установка завдяки системі електро шурупів</li>
-                                <li>Масштабованість: від стартап-студії до корпоративних кампусів</li>
+                <div class="col-lg-4 mb-4">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <div class="product-content">
+                            <h4>ЕкоКомплекс Про</h4>
+                            <p>Середній офіс для команд до 20 осіб з розширеною екосистемою</p>
+                            <div class="price-tag">від $45,000</div>
+                            <ul class="mt-3">
+                                <li>40м² робочого простору</li>
+                                <li>15 курочок-помічників</li>
+                                <li>Зелений дах + вертикальні сади</li>
+                                <li>Система збору дощової води</li>
                             </ul>
                         </div>
                     </div>
+                </div>
 
-                    <div class="col-md-6 mb-4">
-                        <div class="feature h-100">
-                            <h3>🌱 Екологічна Інтеграція: Озеленення</h3>
-                            <ul>
-                                <li>Вертикальні сади на зовнішніх стінах контейнерів</li>
-                                <li>Зелені дахи з системою збору дощової води</li>
-                                <li>Очищення повітря та створення комфортного мікроклімату</li>
-                            </ul>
+                <div class="col-lg-4 mb-4">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <i class="fas fa-city"></i>
                         </div>
-                    </div>
-
-                    <div class="col-md-6 mb-4">
-                        <div class="feature h-100">
-                            <h3>🐔 Біологічний Компонент: Кури-Помічники</h3>
-                            <ul>
-                                <li>Міні-курники як частина ландшафтного дизайну</li>
-                                <li>Природне добриво для підтримання зелених зон</li>
-                                <li>Додатковий дохід від органічних яєць для співробітників</li>
+                        <div class="product-content">
+                            <h4>ЕкоКампус Корпорейт</h4>
+                            <p>Великий офісний комплекс для корпорацій з повною автономністю</p>
+                            <div class="price-tag">від $150,000</div>
+                            <ul class="mt-3">
+                                <li>200м² робочого простору</li>
+                                <li>50 курочок-помічників</li>
+                                <li>Повний цикл переробки відходів</li>
+                                <li>Система розумного будинку</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="py-5">
-            <div class="container">
-                <h2 class="text-center mb-5">Економічна Модель</h2>
-                
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h3 class="card-title">Основні Потоки Доходів:</h3>
-                                <ol>
-                                    <li>Продаж/оренда мобільних офісів</li>
-                                    <li>Ліцензування технології електро шурупів</li>
-                                    <li>Послуги з озеленення та ландшафтного дизайну</li>
-                                    <li>Консалтинг зі сталого розвитку</li>
-                                    <li>Продаж органічної продукції (яйця, зелень)</li>
-                                </ol>
-                            </div>
+    <!-- Галерея -->
+    <section id="gallery" class="bg-light-custom">
+        <div class="container">
+            <h2 class="section-title">Галерея Проєктів</h2>
+            
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="gallery-item">
+                        <i class="fas fa-laptop-code"></i>
+                        <div class="gallery-overlay">
+                            <h5>IT-Стартап у Києві</h5>
+                            <p>Команда з 8 розробників + 10 курочок = 120 яєць на тиждень!</p>
                         </div>
                     </div>
-
-                    <div class="col-md-6">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h3 class="card-title">Конкурентні Переваги:</h3>
-                                <ul>
-                                    <li>Повна самодостатність екосистеми</li>
-                                    <li>Мінімальний вуглецевий слід</li>
-                                    <li>Швидка окупність завдяки модульності</li>
-                                    <li>Унікальна комбінація технологій і біології</li>
-                                </ul>
-                            </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="gallery-item">
+                        <i class="fas fa-paint-brush"></i>
+                        <div class="gallery-overlay">
+                            <h5>Креативна Агенція</h5>
+                            <p>Дизайн-студія з вертикальним садом та курячим подвір'ям</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="gallery-item">
+                        <i class="fas fa-chart-line"></i>
+                        <div class="gallery-overlay">
+                            <h5>Фінтех Офіс</h5>
+                            <p>Сучасні фінансові рішення в екологічному середовищі</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="py-5 bg-light">
-            <div class="container">
-                <h2 class="text-center mb-5">Цільова Аудиторія</h2>
-                <div class="row">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="audience-item">Екологічно свідомі компанії</div>
+    <!-- Команда -->
+    <section id="team">
+        <div class="container">
+            <h2 class="section-title">Наша Команда</h2>
+            
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <i class="fas fa-screwdriver"></i>
+                        </div>
+                        <h4>Петро Шурупенко</h4>
+                        <p class="text-muted">Головний Інженер Електро Шурупів</p>
+                        <p>Винахідник патентованої системи кріплень. 15 років досвіду в будівництві та автоматизації.</p>
                     </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="audience-item">Стартапи, що шукають гнучкі офісні рішення</div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h4>Марія Зеленська</h4>
+                        <p class="text-muted">Директор з Екології</p>
+                        <p>Експert з пермакультури та вертикального садівництва. PhD в галузі біології рослин.</p>
                     </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="audience-item">Будівельні компанії, що потребують тимчасових офісів</div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="audience-item">Агротуристичні проєкти</div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <i class="fas fa-egg"></i>
+                        </div>
+                        <h4>Іван Курячий</h4>
+                        <p class="text-muted">Спеціаліст з Птахівництва</p>
+                        <p>Зоотехнік з 20-річним стажем. Розробник системи інтеграції курей в офісні екосистеми.</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="py-5">
-            <div class="container text-center">
-                <h2 class="mb-4">🎯 Слоган</h2>
-                <p class="big-slogan">"Де технології зустрічаються з природою – народжується майбутнє бізнесу!"</p>
+    <!-- Економічна модель -->
+    <section id="pricing" class="bg-light-custom">
+        <div class="container">
+            <h2 class="section-title">Економічна Модель</h2>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="feature-card">
+                        <h3><i class="fas fa-chart-line"></i> Основні Потоки Доходів</h3>
+                        <ol>
+                            <li>Продаж/оренда мобільних офісів</li>
+                            <li>Ліцензування технології електро шурупів</li>
+                            <li>Послуги з озеленення та ландшафтного дизайну</li>
+                            <li>Консалтинг зі сталого розвитку</li>
+                            <li>Продаж органічної продукції (яйця, зелень)</li>
+                        </ol>
+                        <div class="mt-3">
+                            <strong>Прогнозована виручка:</strong> $2.5M на рік
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="feature-card">
+                        <h3><i class="fas fa-trophy"></i> Конкурентні Переваги</h3>
+                        <ul>
+                            <li>Повна самодостатність екосистеми</li>
+                            <li>Мінімальний вуглецевий слід (CO₂ -85%)</li>
+                            <li>Швидка окупність (18 місяців)</li>
+                            <li>Унікальна комбінація технологій і біології</li>
+                            <li>Патентна захищеність рішень</li>
+                        </ul>
+                        <div class="mt-3">
+                            <strong>ROI:</strong> 320% за 3 роки
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <footer>
+    <!-- Цільова аудиторія -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Цільова Аудиторія</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="audience-item">
+                        <i class="fas fa-leaf mb-3" style="font-size: 2rem; color: #2d6e3c;"></i>
+                        <h5>Екологічно свідомі компанії</h5>
+                        <p>Бізнеси, що прагнуть зменшити екологічний вплив</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="audience-item">
+                        <i class="fas fa-rocket mb-3" style="font-size: 2rem; color: #2d6e3c;"></i>
+                        <h5>Стартапи</h5>
+                        <p>Молоді команди, що шукають гнучкі офісні рішення</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="audience-item">
+                        <i class="fas fa-hard-hat mb-3" style="font-size: 2rem; color: #2d6e3c;"></i>
+                        <h5>Будівельні компанії</h5>
+                        <p>Підрядники, що потребують тимчасових офісів на об'єктах</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="audience-item">
+                        <i class="fas fa-mountain mb-3" style="font-size: 2rem; color: #2d6e3c;"></i>
+                        <h5>Агротуристичні проєкти</h5>
+                        <p>Екологічні готелі та рекреаційні комплекси</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Слоган -->
+    <section class="bg-light-custom">
         <div class="container text-center">
-            <p class="mb-0"><em>Інноваційне рішення, що об'єднує промислові технології з принципами пермакультури для створення справді сталого бізнесу майбутнього.</em></p>
+            <h2 class="section-title">🎯 Наш Слоган</h2>
+            <p class="big-slogan">"Де технології зустрічаються з природою – народжується майбутнє бізнесу!"</p>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4>ЕлектроШуруб Екосистеми</h4>
+                    <p><em>Інноваційне рішення, що об'єднує промислові технології з принципами пермакультури для створення справді сталого бізнесу майбутнього.</em></p>
+                </div>
+                <div class="col-lg-3">
+                    <h5>Контакти</h5>
+                    <p>
+                        <i class="fas fa-envelope"></i> info@elektroshurub.ua<br>
+                        <i class="fas fa-phone"></i> +380 (44) 123-45-67<br>
+                        <i class="fas fa-map-marker-alt"></i> Київ, Україна
+                    </p>
+                </div>
+                <div class="col-lg-3">
+                    <h5>Соціальні мережі</h5>
+                    <p>
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-2x"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin fa-2x"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram fa-2x"></i></a>
+                    </p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2024 ЕлектроШуруб Екосистеми. Всі права захищені. 🔩🏢🌱🐔</p>
+            </div>
         </div>
     </footer>
 
+    <!-- Кнопка прокрутки вгору -->
+    <button class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Плавна прокрутка для навігації
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Кнопка прокрутки вгору
+        const scrollButton = document.getElementById('scrollToTop');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollButton.classList.add('show');
+            } else {
+                scrollButton.classList.remove('show');
+            }
+        });
+
+        scrollButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Зміна прозорості навбару при прокрутці
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 50) {
+                navbar.style.background = 'rgba(45, 110, 60, 0.95)';
+            } else {
+                navbar.style.background = 'rgba(45, 110, 60, 0.9)';
+            }
+        });
+    </script>
 </body>
 </html>
